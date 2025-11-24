@@ -1,5 +1,5 @@
-var a = 10;
+const user = "Rahul bharada"
+export const age = 25
+export const skills = ["frontend", "Backend", "UI/UX"]
 
-export const arr = [10,20,30,40,50]
-
-export default arr
+export default user

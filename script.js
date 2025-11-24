@@ -4,6 +4,9 @@
 
 // document.body.appendChild(h1);
 
-import arr from "./app.js"
-console.log(arr);
+import a from "./app.js"
+import {age, skills} from "./app.js"
+import user1 from "./test.js"
+
+console.log(age,skills, user1);
 
