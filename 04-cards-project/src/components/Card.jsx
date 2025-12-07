@@ -1,13 +1,18 @@
 import React from "react";
 import { Bookmark } from "lucide-react";
 
-const Card = () => {
+const Card = (props) => {
+
+  // console.log(props.company);
+ 
+  
+  
   return (
     <div className="card">
       <div>
         <div className="top">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/d/de/Amazon_icon.png"
+            src={props.brandLogo}
             alt="logo"
           />
           <button>
@@ -17,20 +22,20 @@ const Card = () => {
 
         <div className="center">
           <h2>
-            Amazon <span>% days ago</span>
+            {props.company} <span>{props.datePosted}</span>
           </h2>
-          <h3>Senior UI/UX Designer</h3>
+          <h3>{props.post}</h3>
 
           <div className="tag">
-            <h4>Part Time</h4>
-            <h4>Senior level</h4>
+            <h4>{props.tag1}</h4>
+            <h4>{props.tag2}</h4>
           </div>
         </div>
       </div>
       <div className="bottom">
         <div>
-          <h3>$120/hr</h3>
-          <p>Mumbai, India</p>
+          <h3>{props.pay}</h3>
+          <p>{props.location}</p>
         </div>
         <button>Apply Now</button>
       </div>
