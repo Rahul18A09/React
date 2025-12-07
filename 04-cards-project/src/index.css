@@ -9,6 +9,7 @@ html,
 body {
   height: 100%;
   width: 100%;
+ 
 }
 
 .parent {
@@ -61,26 +62,25 @@ body {
   /* background-color: red; */
 }
 
-.center h2{
+.center h2 {
   font-size: 18px;
   font-weight: 500;
 }
 
-.center span{
-font-size: 10px;
-font-weight: 400;
-color: #8b8b8b;
+.center span {
+  font-size: 10px;
+  font-weight: 400;
+  color: #8b8b8b;
 }
 
-.center h3{
+.center h3 {
   font-size: 20px;
-
 }
 
-.center .tag{
-display: flex;
-margin-top: 10px;
-gap: 5px;
+.center .tag {
+  display: flex;
+  margin-top: 10px;
+  gap: 5px;
 }
 
 .center .tag h4 {
@@ -100,20 +100,20 @@ gap: 5px;
   padding-top: 15px;
 }
 
-.bottom button{
+.bottom button {
   background-color: black;
   color: white;
-  padding: 5px 10px ;
+  padding: 5px 10px;
   border: none;
   border-radius: 5px;
   column-width: 600;
 }
 
-.bottom h3{
+.bottom h3 {
   font-size: 17px;
 }
 
-.bottom p{
+.bottom p {
   font-size: 10px;
   color: #8b8b8b;
 }
