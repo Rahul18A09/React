@@ -10,11 +10,45 @@ html, body {
   width: 100%;
 }
 
+.parent{
+  display: flex;
+  
+}
+
 .card {
+  width: 350px;
   background-color: pink;
   border-radius: 10px;
   margin: 20px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img{
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card h1, h2{
+margin-bottom: 10px;
+
+}
+
+button{
+  background-color: lightgreen;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 18px;
+  transition: 0.3s ease-in-out;
+}
+
+button:hover{
+  background-color: palevioletred;
+  color: lightgreen;
 }
 
 .nav{
@@ -22,3 +56,4 @@ html, body {
   padding: 10px;
   margin: 5px;
 }
+
