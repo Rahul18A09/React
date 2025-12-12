@@ -1,9 +1,9 @@
-import { Route, Routes } from "react-router-dom";
-import About from "./assets/container/About";
-import Home from "./assets/container/Home";
-import ContactUs from "./assets/container/ContactUs";
-import ErrorPage from "./assets/container/ErrorPage";
-import Header from "./assets/components/Header";
+import { Routes, Route } from "react-router-dom";
+import Home from "./container/Home";
+import About from "./container/About";
+import ContactUs from "./container/ContactUs";
+import ErrorPage from "./container/ErrorPage";
+import Header from "./components/Header";
 
 function App() {
   return (
@@ -11,12 +11,10 @@ function App() {
       <div>
         <Header />
         <Routes>
-
-          <Route path="/" element={<Home/>} />
-          <Route path="/about" element={<About/>} />
-          <Route path="/contactus" element={<ContactUs/>} />
-          <Route path="*" element={<ErrorPage/>} />
-
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/errorpage" element={<ErrorPage />} />
         </Routes>
       </div>
     </>
