@@ -3,11 +3,11 @@ import LeftCotent from "./LeftCotent";
 import RightContent from "./RightContent";
 
 
-const Page1Content = () => {
+const Page1Content = (props) => {
   return (
     <div className="py-10 flex items-center gap-10 h-[90vh]">
      <LeftCotent/>
-     <RightContent/>
+     <RightContent users={props.users}/>
     </div>
   );
 };
