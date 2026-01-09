@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone,} from "@fortawesome/free-solid-svg-icons";
+
 
 import {
   faLinkedin,
@@ -38,23 +41,23 @@ function Doctors(props) {
                   <div className="team-contact-info">
                     <p>
                       {" "}
-                      <FontAwesomeIcon  icon={faPhone} /> 010-020-0120
+                      <FontAwesomeIcon className="icon" icon={faPhone} /> 010-020-0120
                     </p>
                     <p>
                       {" "}
-                      <FontAwesomeIcon  icon={faEnvelope} />{" "}
+                      <FontAwesomeIcon className="icon"  icon={faEnvelope} />{" "}
                       <Link to="/">general@company.com</Link>
                     </p>
                   </div>
                   <ul className="social-icon">
                     <li>
                       <Link to="/">
-                        <FontAwesomeIcon className="a" icon={faLinkedin} />
+                        <FontAwesomeIcon className="icon" icon={faLinkedin} />
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <FontAwesomeIcon className="a" icon={faEnvelope} />
+                        <FontAwesomeIcon className="icon" icon={faEnvelope} />
                       </Link>
                     </li>
                   </ul>
@@ -73,27 +76,27 @@ function Doctors(props) {
                   <p>Pregnancy</p>
                   <div className="team-contact-info">
                     <p>
-                        <FontAwesomeIcon icon={faPhone} /> 010-070-0170
+                        <FontAwesomeIcon  className="icon" icon={faPhone} /> 010-070-0170
                     </p>
                     <p>
-                        <FontAwesomeIcon icon={faEnvelope} />{" "}
+                        <FontAwesomeIcon  className="icon" icon={faEnvelope} />{" "}
                       <Link to="/">pregnancy@company.com</Link>
                     </p>
                   </div>
                   <ul className="social-icon">
                     <li>
                        <Link to="/">
-                        <FontAwesomeIcon icon={faFacebookSquare} />
+                        <FontAwesomeIcon  className="icon" icon={faFacebookSquare} />
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <FontAwesomeIcon icon={faEnvelope} />
+                        <FontAwesomeIcon  className="icon" icon={faEnvelope} />
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <FontAwesomeIcon icon={faFlickr} />
+                        <FontAwesomeIcon  className="icon" icon={faFlickr} />
                       </Link>
                     </li>
                   </ul>
@@ -112,22 +115,22 @@ function Doctors(props) {
                   <p>Cardiology</p>
                   <div className="team-contact-info">
                     <p>
-                       <FontAwesomeIcon icon={faPhone} /> 010-040-0140
+                       <FontAwesomeIcon  className="icon" icon={faPhone} /> 010-040-0140
                     </p>
                     <p>
-                      <FontAwesomeIcon icon={faEnvelope} />{" "}
+                      <FontAwesomeIcon  className="icon" icon={faEnvelope} />{" "}
                       <Link to="/">cardio@company.com</Link>
                     </p>
                   </div>
                   <ul className="social-icon">
                     <li>
                        <Link to="/">
-                        <FontAwesomeIcon icon={faTwitter} />
+                        <FontAwesomeIcon className="icon" icon={faTwitter} />
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <FontAwesomeIcon icon={faEnvelope} />
+                        <FontAwesomeIcon  className="icon" icon={faEnvelope} />
                       </Link>
                     </li>
                   </ul>

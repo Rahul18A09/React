@@ -5,13 +5,14 @@ import { faHSquare } from "@fortawesome/free-solid-svg-icons";
 function AboutUs(props) {
   return (
     <main>
+
       <section id="about">
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-sm-6">
               <div className="about-info">
                 <h2 className="wow fadeInUp" data-wow-delay="0.6s">
-                  Welcome to Your <FontAwesomeIcon icon={faHSquare}/>ealth Center
+                  Welcome to Your{" "} <FontAwesomeIcon  icon={faHSquare} className="health-icon"/>ealth Center
                 </h2>
                 <div className="wow fadeInUp" data-wow-delay="0.8s">
                   <p>

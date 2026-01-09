@@ -5,16 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhone,
   faEnvelope,
-  faAngleUp,
   faCalendarPlus,
   faHSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  faFacebookSquare,
-  faTwitter,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
+
 
 function Header(props) {
   return (
@@ -27,14 +22,14 @@ function Header(props) {
             </div>
             <div className="col-md-8 col-sm-7 text-align-right">
               <span className="phone-icon">
-                <FontAwesomeIcon icon={faPhone} /> 010-060-0160
+                <FontAwesomeIcon icon={faPhone} className="icon"/> 010-060-0160
               </span>
               <span className="date-icon">
-                <FontAwesomeIcon icon={faCalendarPlus} /> 6:00 AM - 10:00 PM
+                <FontAwesomeIcon icon={faCalendarPlus} className="icon" /> 6:00 AM - 10:00 PM
                 (Mon-Fri)
               </span>
               <span className="email-icon">
-                <FontAwesomeIcon icon={faEnvelope} /> 
+                <FontAwesomeIcon icon={faEnvelope} className="icon" /> 
                 <Link to="/">info@company.com</Link>
               </span>
             </div>
@@ -59,7 +54,7 @@ function Header(props) {
             </button>
             {/* lOGO TEXT HERE */}
             <Link to="/" className="navbar-brand">
-              <FontAwesomeIcon icon={faHSquare} /> Health Center
+              <FontAwesomeIcon icon={faHSquare} className="icon" /> Health Center
             </Link>
           </div>
           {/* MENU LINKS  */}
@@ -91,7 +86,7 @@ function Header(props) {
                 </Link>
               </li>
               <li className="appointment-btn">
-                <Link to="/appointment">Make an appointment</Link>
+                <Link to="/appointment" className="appointment-link">Make an appointment</Link>
               </li>
             </ul>
           </div>

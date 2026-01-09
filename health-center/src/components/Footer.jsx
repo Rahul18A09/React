@@ -37,7 +37,7 @@ function Footer(props) {
                   </p>
                   <p>
                     <FontAwesomeIcon icon={faEnvelope} />{" "}
-                    <Link to="/">info@company.com</Link>
+                    <Link className="ancher" to="/">info@company.com</Link>
                   </p>
                 </div>
               </div>
@@ -49,7 +49,7 @@ function Footer(props) {
                 </h4>
                 <div className="latest-stories">
                   <div className="stories-image">
-                    <Link to="/">
+                    <Link  className="ancher" to="/">
                       <img
                         src="./src/assets/images/news-image.jpg"
                         className="img-responsive"
@@ -58,7 +58,7 @@ function Footer(props) {
                     </Link>
                   </div>
                   <div className="stories-info">
-                    <Link to="/">
+                    <Link className="ancher" to="/">
                       <h5>Amazing Technology</h5>
                     </Link>
                     <span>March 08, 2018</span>
@@ -102,14 +102,14 @@ function Footer(props) {
                 <ul className="social-icon">
                   <li>
                     <Link to="https://www.facebook.com/tooplate">
-                      <FontAwesomeIcon icon={faFacebookSquare} />
+                      <FontAwesomeIcon className="icon" icon={faFacebookSquare} />
                     </Link>
                   </li>
                   <li>
-                     <FontAwesomeIcon icon={faTwitter} />
+                     <FontAwesomeIcon className="icon" icon={faTwitter} />
                   </li>
                   <li>
-                     <FontAwesomeIcon icon={faInstagram} />
+                     <FontAwesomeIcon className="icon" icon={faInstagram} />
                   </li>
                 </ul>
               </div>
@@ -141,7 +141,7 @@ function Footer(props) {
                     data-wow-delay="1.2s"
                   >
                     {/* <i className="fa fa-angle-up" /> */}
-                    <FontAwesomeIcon icon={faAngleUp} />
+                    <FontAwesomeIcon className="icon" icon={faAngleUp} />
                   </Link>
                 </div>
               </div>
