@@ -1,12 +1,13 @@
 
 import "./App.css";
+import UserCrud from "./components/UserCrud";
 
 function App() {
  
 
   return (
     <div>
-      <h1>CRUD</h1>
+     <UserCrud/>
     </div>
   );
 }
