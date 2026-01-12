@@ -124,11 +124,11 @@ const Appointments = () => {
         <Table>
           <TableHead>
             <TableRow sx={{ backgroundColor: "grey.100" }}>
-              <TableCell sx={{ fontWeight: 600 }}>Patient</TableCell>
-              <TableCell sx={{ fontWeight: 600 }}>Doctor</TableCell>
-              <TableCell sx={{ fontWeight: 600 }}>Date</TableCell>
-              <TableCell sx={{ fontWeight: 600 }}>Status</TableCell>
-              <TableCell sx={{ fontWeight: 600 }} align="right">
+              <TableCell sx={{ fontWeight: 600, fontSize:"1.5rem"}}>Patient</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize:"1.5rem"}}>Doctor</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize:"1.5rem"}}>Date</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize:"1.5rem"}}>Status</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize:"1.5rem"}} align="right">
                 Actions
               </TableCell>
             </TableRow>
@@ -145,16 +145,16 @@ const Appointments = () => {
                   },
                 }}
               >
-                <TableCell>{appt.patient}</TableCell>
-                <TableCell>{appt.doctor}</TableCell>
-                <TableCell>{appt.date}</TableCell>
+                <TableCell sx={{fontSize:"1.2rem"}}>{appt.patient}</TableCell>
+                <TableCell sx={{fontSize:"1.2rem"}}>{appt.doctor}</TableCell>
+                <TableCell sx={{fontSize:"1.2rem"}}>{appt.date}</TableCell>
 
                 <TableCell>
                   <Chip
                     label={appt.status}
                     color={statusColor[appt.status]}
-                    size="small"
-                    sx={{ fontWeight: 500 }}
+                    size="big"
+                    sx={{ fontWeight: 600, fontSize:"1.2rem" }}
                   />
                 </TableCell>
 
@@ -174,7 +174,7 @@ const Appointments = () => {
                             },
                           }}
                         >
-                          <CheckIcon fontSize="small" />
+                          <CheckIcon fontSize="big" />
                         </IconButton>
 
                         <IconButton
@@ -189,7 +189,7 @@ const Appointments = () => {
                             },
                           }}
                         >
-                          <CloseIcon fontSize="small" />
+                          <CloseIcon fontSize="big" />
                         </IconButton>
                       </>
                     )}
@@ -204,7 +204,7 @@ const Appointments = () => {
                         },
                       }}
                     >
-                      <DeleteIcon fontSize="small" />
+                      <DeleteIcon fontSize="big" />
                     </IconButton>
                   </Stack>
                 </TableCell>
@@ -228,7 +228,7 @@ const Appointments = () => {
         <DialogContent sx={{ pt: 2 }}>
           <TextField
             label="Patient Name"
-            fullWidth
+            fullWidth 
             margin="normal"
             value={patient}
             onChange={(e) => setPatient(e.target.value)}

@@ -5,13 +5,15 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import AdminRoutes from "./routes/AdminRoutes";
 
+
+
+
 function App() {
   return (
     <>
       {/* <Header />
       <UserRoutes />
       <Footer /> */}
-
       <Routes>
         <Route path="/admin/*" element={<AdminRoutes />} />
       </Routes>

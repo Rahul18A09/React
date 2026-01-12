@@ -8,6 +8,8 @@ const StatCard = ({ title, value, icon, bgColor }) => {
     <Card
       sx={{
         borderRadius: 4,
+        fontWeight: 600,
+        fontSize: "1.3rem",
         height: "100%",
         transition: "all 0.3s ease",
         boxShadow: "0 6px 20px rgba(0,0,0,0.06)",
@@ -49,10 +51,10 @@ const StatCard = ({ title, value, icon, bgColor }) => {
           <Box>
             <Typography
               sx={{
-                fontSize: { xs: "0.75rem", sm: "0.85rem" },
-                fontWeight: 500,
+                fontSize: { xs: "0.9rem", sm: "1rem" },
+                fontWeight: 600,
                 color: "text.secondary",
-                letterSpacing: "0.4px",
+                letterSpacing: "0.5px",
                 mb: 0.5,
               }}
             >
@@ -61,9 +63,9 @@ const StatCard = ({ title, value, icon, bgColor }) => {
 
             <Typography
               sx={{
-                fontSize: { xs: "1.4rem", sm: "2rem" },
+                fontSize: { xs: "1.8rem", sm: "2.4rem", md: "2.6rem" },
                 fontWeight: 700,
-                lineHeight: 1.2,
+                lineHeight: 1.1,
               }}
             >
               {value}
@@ -81,7 +83,7 @@ const Dashboard = () => {
       {/* Title */}
       <Typography
         sx={{
-          fontSize: { xs: "1.6rem", sm: "2rem" },
+          fontSize: { xs: "1.8rem", sm: "2.2rem" },
           fontWeight: 700,
           mb: { xs: 2, sm: 4 },
         }}
@@ -92,10 +94,7 @@ const Dashboard = () => {
       <Grid container spacing={{ xs: 2, sm: 3 }}>
         <Grid item xs={12} sm={6} md={4}>
           <StatCard
-          sx={{"& .MuiListItemText-primary": {
-                fontSize: "1.5rem",
-                fontWeight: 500,
-              },}}
+           
             title="Total Doctors"
             value="12"
             bgColor="primary.light"
@@ -105,10 +104,12 @@ const Dashboard = () => {
 
         <Grid item xs={12} sm={6} md={4}>
           <StatCard
-          sx={{"& .MuiListItemText-primary": {
+            sx={{
+              "& .MuiListItemText-primary": {
                 fontSize: "1.5rem",
                 fontWeight: 500,
-              },}}
+              },
+            }}
             title="Appointments"
             value="34"
             bgColor="success.light"
@@ -118,10 +119,12 @@ const Dashboard = () => {
 
         <Grid item xs={12} sm={6} md={4}>
           <StatCard
-          sx={{"& .MuiListItemText-primary": {
+            sx={{
+              "& .MuiListItemText-primary": {
                 fontSize: "1.5rem",
                 fontWeight: 500,
-              },}}
+              },
+            }}
             title="Patients"
             value="89"
             bgColor="warning.light"

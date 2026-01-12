@@ -86,7 +86,7 @@ const Doctors = () => {
           Doctors
         </Typography>
 
-        <Button variant="contained" startIcon={<AddIcon />} onClick={handleAdd}>
+        <Button variant="contained" sx={{fontSize:"1.2rem"}} startIcon={<AddIcon />} onClick={handleAdd}>
           Add Doctor
         </Button>
       </Box>
@@ -102,9 +102,9 @@ const Doctors = () => {
         <Table>
           <TableHead>
             <TableRow sx={{ backgroundColor: "grey.100" }}>
-              <TableCell sx={{ fontWeight: 600 , fontSize: "1.3rem"}}>Name</TableCell>
-              <TableCell sx={{ fontWeight: 600 , fontSize: "1.3rem"}}>Specialty</TableCell>
-              <TableCell sx={{ fontWeight: 600 , fontSize: "1.3rem"}} align="right">
+              <TableCell sx={{ fontWeight: 600 , fontSize: "1.5rem"}}>Name</TableCell>
+              <TableCell sx={{ fontWeight: 600 , fontSize: "1.5rem"}}>Specialty</TableCell>
+              <TableCell sx={{ fontWeight: 600 , fontSize: "1.5rem"}} align="right">
                 Actions
               </TableCell>
             </TableRow>
@@ -122,10 +122,10 @@ const Doctors = () => {
                   },
                 }}
               >
-                <TableCell>{doctor.name}</TableCell>
-                <TableCell>{doctor.specialty}</TableCell>
+                <TableCell sx={{fontSize:"1.2rem"}}>{doctor.name}</TableCell>
+                <TableCell sx={{fontSize:"1.2rem"}}>{doctor.specialty}</TableCell>
 
-                <TableCell align="right">
+                <TableCell align="right" sx={{fontSize:"1.2rem"}}>
                   <Stack direction="row" spacing={1} justifyContent="flex-end">
                     <IconButton
                       onClick={() => handleEdit(doctor)}
@@ -140,7 +140,7 @@ const Doctors = () => {
                         },
                       }}
                     >
-                      <EditIcon fontSize="small" />
+                      <EditIcon fontSize="big" />
                     </IconButton>
 
                     <IconButton
@@ -157,7 +157,7 @@ const Doctors = () => {
                         },
                       }}
                     >
-                      <DeleteIcon fontSize="small" />
+                      <DeleteIcon fontSize="big" />
                     </IconButton>
                   </Stack>
                 </TableCell>

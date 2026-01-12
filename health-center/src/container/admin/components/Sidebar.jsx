@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Drawer,
   List,
@@ -6,96 +7,194 @@ import {
   ListItemText,
   Toolbar,
   Typography,
+  IconButton,
+  Box,
+  Avatar,
+  Tooltip,
+  Switch,
+  Divider,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 
+import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
+
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import SettingsIcon from "@mui/icons-material/Settings";
-
-import { NavLink } from "react-router-dom";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 const drawerWidth = 260;
+const collapsedWidth = 76;
 
+/* 🔐 ROLE BASED MENU */
 const menuItems = [
-  { text: "Dashboard", icon: <DashboardIcon />, path: "/admin" },
-  { text: "Doctors", icon: <LocalHospitalIcon />, path: "/admin/doctors" },
-  { text: "Appointments", icon: <EventAvailableIcon />, path: "/admin/appointments" },
-  { text: "Settings", icon: <SettingsIcon />, path: "/admin/settings" },
+  {
+    text: "Dashboard",
+    icon: <DashboardIcon />,
+    path: "/admin",
+    roles: ["admin", "doctor", "staff"],
+  },
+  {
+    text: "Doctors",
+    icon: <LocalHospitalIcon />,
+    path: "/admin/doctors",
+    roles: ["admin"],
+  },
+  {
+    text: "Appointments",
+    icon: <EventAvailableIcon />,
+    path: "/admin/appointments",
+    roles: ["admin", "doctor"],
+  },
+  {
+    text: "Settings",
+    icon: <SettingsIcon />,
+    path: "/admin/settings",
+    roles: ["admin"],
+  },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ darkMode, setDarkMode }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  const [open, setOpen] = useState(!isMobile);
+  const [collapsed, setCollapsed] = useState(false);
+
+  const userRole = "admin"; // 🔐 example role
+
   return (
-    <Drawer
-      variant="permanent"
-      sx={{
-        width: drawerWidth,
-        [`& .MuiDrawer-paper`]: {
-          width: drawerWidth,
-          boxSizing: "border-box",
-          backgroundColor: "#f1f8f6", // light medical background
-          borderRight: "1px solid #e0e0e0",
-        },
-      }}
-    >
-      <Toolbar />
+    <>
+      {/* 📱 Mobile Toggle */}
+      {isMobile && (
+        <IconButton
+          onClick={() => setOpen(true)}
+          sx={{ position: "fixed", top: 16, left: 16, zIndex: 1300 }}
+        >
+          <MenuIcon />
+        </IconButton>
+      )}
 
-      {/* Logo / Title */}
-      <Typography
-        variant="h4"
-        textAlign="center"
-        fontWeight="bold"
-        color="#2e7d32"
-        mb={2}
+      <Drawer
+        variant={isMobile ? "temporary" : "permanent"}
+        open={open}
+        onClose={() => setOpen(false)}
+        sx={{
+          width: collapsed ? collapsedWidth : drawerWidth,
+          "& .MuiDrawer-paper": {
+            width: collapsed ? collapsedWidth : drawerWidth,
+            backgroundColor: darkMode ? "#121212" : "#f1f8f6",
+            color: darkMode ? "#fff" : "#000",
+            transition: "width 0.35s ease",
+          },
+        }}
       >
-        🏥 Health Center
-      </Typography>
+        {/* 🔰 HEADER */}
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: collapsed ? "center" : "space-between",
+            px: 2,
+          }}
+        >
+          {!collapsed && (
+            <Typography fontWeight={700} fontSize={"1.5rem"} color="success.main">
+              🏥 Health Center
+            </Typography>
+          )}
 
-      <List sx={{ px: 1 }}>
-        {menuItems.map((item) => (
-          <ListItemButton
-            key={item.text}
-            component={NavLink}
-            to={item.path}
+          <IconButton onClick={() => setCollapsed(!collapsed)}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </Toolbar>
+
+        {/* 🌙 DARK MODE */}
+        {/* {!collapsed && (
+          <Box sx={{ px: 2, py: 1, display: "flex", alignItems: "center", gap: 1 }}>
+            <DarkModeIcon fontSize="small" />
+            <Typography fontSize="0.9rem">Dark Mode</Typography>
+            <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+          </Box>
+        )} */}
+
+        <Divider sx={{mb:1}}/>
+
+        {/* 📜 MENU */}
+        <List sx={{ px: 1}}>
+          {menuItems
+            .filter((item) => item.roles.includes(userRole))
+            .map((item) => (
+              <Tooltip
+                key={item.text}
+                title={collapsed ? item.text : ""}
+                placement="right"
+              >
+                <motion.div whileHover={{ scale: 1.05 }}>
+                  <ListItemButton
+                    component={NavLink}
+                    to={item.path}
+                    onClick={isMobile ? () => setOpen(false) : undefined}
+                    sx={{   
+                      borderRadius: 2,
+                      mb: 2,
+                      justifyContent: collapsed ? "center" : "flex-start",
+                      "&.active": {
+                        backgroundColor: "success.main",
+                        color: "#fff",
+                      },
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        fontSize:"1rem",
+                        color: "inherit",
+                        minWidth: collapsed ? "auto" : 40,
+                        justifyContent: "center",
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+
+                    {!collapsed && <ListItemText primary={item.text} />}
+                  </ListItemButton>
+                </motion.div>
+              </Tooltip>
+            ))}
+        </List>
+
+        {/* 👤 USER PROFILE */}
+        <Box sx={{ mt: "auto", p: 2 , fontSize:"1rem"}}>
+          <Divider sx={{ mb: 2 }} />
+
+          <Box
             sx={{
-              borderRadius: 2,
-              mb: 1,
-              px: 2,
-
-              "& .MuiListItemIcon-root": {
-                color: "#388e3c",
-                minWidth: 40,
-              },
-
-              "& .MuiListItemText-primary": {
-                fontSize: "1.5rem",
-                fontWeight: 500,
-              },
-
-              "&:hover": {
-                backgroundColor: "#dcedc8",
-              },
-
-              "&.active": {
-                backgroundColor: "#388e3c",
-                color: "#fff",
-
-                "& .MuiListItemIcon-root": {
-                  color: "#fff",
-                },
-
-                "& .MuiListItemText-primary": {
-                  fontWeight: 600,
-                },
-              },
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              justifyContent: collapsed ? "center" : "flex-start",
             }}
           >
-            <ListItemIcon>{item.icon}</ListItemIcon>
-            <ListItemText primary={item.text} />
-          </ListItemButton>
-        ))}
-      </List>
-    </Drawer>
+            {/* <Avatar src="https://i.pravatar.cc/100" /> */}
+
+            {!collapsed && (
+              <Box>
+                <Typography fontSize="1.2rem" color="green" fontWeight={700}>
+                  Rahul Bharada
+                </Typography>
+                <Typography fontSize="1rem" color="text.secondary">
+                  Admin
+                </Typography>
+              </Box>
+            )}
+          </Box>
+        </Box>
+      </Drawer>
+    </>
   );
 };
 
