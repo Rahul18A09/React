@@ -13,15 +13,16 @@ import {
   DialogContent,
   DialogActions,
   TextField,
-  MenuItem,
   Chip,
   IconButton,
   Stack,
+  Box,
 } from "@mui/material";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
+import AddIcon from "@mui/icons-material/Add";
 
 const statusColor = {
   Pending: "warning",
@@ -52,7 +53,6 @@ const Appointments = () => {
   const [doctor, setDoctor] = useState("");
   const [date, setDate] = useState("");
 
-  // Add Appointment
   const handleAdd = () => {
     setAppointments([
       ...appointments,
@@ -70,7 +70,6 @@ const Appointments = () => {
     setOpen(false);
   };
 
-  // Update Status
   const updateStatus = (id, status) => {
     setAppointments(
       appointments.map((appt) =>
@@ -79,72 +78,133 @@ const Appointments = () => {
     );
   };
 
-  // Delete Appointment
   const handleDelete = (id) => {
     setAppointments(appointments.filter((appt) => appt.id !== id));
   };
 
   return (
     <>
-      <Typography variant="h4" fontWeight="bold" mb={3}>
-        Appointments
-      </Typography>
+      {/* Header */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: { xs: "stretch", sm: "center" },
+          flexDirection: { xs: "column", sm: "row" },
+          gap: 2,
+          mb: 3,
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: { xs: "1.6rem", sm: "2rem" },
+            fontWeight: 700,
+          }}
+        >
+          Appointments
+        </Typography>
 
-      <Button variant="contained" onClick={() => setOpen(true)} sx={{ mb: 2 }}>
-        Add Appointment
-      </Button>
+        <Button
+          variant="contained"
+          startIcon={<AddIcon />}
+          onClick={() => setOpen(true)}
+        >
+          Add Appointment
+        </Button>
+      </Box>
 
-      <Paper>
+      {/* Table */}
+      <Paper
+        sx={{
+          borderRadius: 4,
+          overflowX: "auto",
+          boxShadow: "0 8px 24px rgba(0,0,0,0.06)",
+        }}
+      >
         <Table>
           <TableHead>
-            <TableRow>
-              <TableCell>Patient</TableCell>
-              <TableCell>Doctor</TableCell>
-              <TableCell>Date</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell align="right">Actions</TableCell>
+            <TableRow sx={{ backgroundColor: "grey.100" }}>
+              <TableCell sx={{ fontWeight: 600 }}>Patient</TableCell>
+              <TableCell sx={{ fontWeight: 600 }}>Doctor</TableCell>
+              <TableCell sx={{ fontWeight: 600 }}>Date</TableCell>
+              <TableCell sx={{ fontWeight: 600 }}>Status</TableCell>
+              <TableCell sx={{ fontWeight: 600 }} align="right">
+                Actions
+              </TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
             {appointments.map((appt) => (
-              <TableRow key={appt.id}>
+              <TableRow
+                key={appt.id}
+                sx={{
+                  transition: "0.2s",
+                  "&:hover": {
+                    backgroundColor: "grey.50",
+                  },
+                }}
+              >
                 <TableCell>{appt.patient}</TableCell>
                 <TableCell>{appt.doctor}</TableCell>
                 <TableCell>{appt.date}</TableCell>
+
                 <TableCell>
                   <Chip
                     label={appt.status}
                     color={statusColor[appt.status]}
+                    size="small"
+                    sx={{ fontWeight: 500 }}
                   />
                 </TableCell>
+
                 <TableCell align="right">
                   <Stack direction="row" spacing={1} justifyContent="flex-end">
                     {appt.status === "Pending" && (
                       <>
                         <IconButton
-                          color="success"
                           onClick={() =>
                             updateStatus(appt.id, "Approved")
                           }
+                          sx={{
+                            backgroundColor: "success.light",
+                            "&:hover": {
+                              backgroundColor: "success.main",
+                              color: "#fff",
+                            },
+                          }}
                         >
-                          <CheckIcon />
+                          <CheckIcon fontSize="small" />
                         </IconButton>
+
                         <IconButton
-                          color="error"
                           onClick={() =>
                             updateStatus(appt.id, "Cancelled")
                           }
+                          sx={{
+                            backgroundColor: "warning.light",
+                            "&:hover": {
+                              backgroundColor: "warning.main",
+                              color: "#fff",
+                            },
+                          }}
                         >
-                          <CloseIcon />
+                          <CloseIcon fontSize="small" />
                         </IconButton>
                       </>
                     )}
+
                     <IconButton
-                      color="error"
                       onClick={() => handleDelete(appt.id)}
+                      sx={{
+                        backgroundColor: "error.light",
+                        "&:hover": {
+                          backgroundColor: "error.main",
+                          color: "#fff",
+                        },
+                      }}
                     >
-                      <DeleteIcon />
+                      <DeleteIcon fontSize="small" />
                     </IconButton>
                   </Stack>
                 </TableCell>
@@ -154,33 +214,42 @@ const Appointments = () => {
         </Table>
       </Paper>
 
-      {/* Add Appointment Dialog */}
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Add Appointment</DialogTitle>
-        <DialogContent>
+      {/* Dialog */}
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        fullWidth
+        maxWidth="sm"
+      >
+        <DialogTitle sx={{ fontWeight: 700 }}>
+          Add Appointment
+        </DialogTitle>
+
+        <DialogContent sx={{ pt: 2 }}>
           <TextField
             label="Patient Name"
             fullWidth
-            margin="dense"
+            margin="normal"
             value={patient}
             onChange={(e) => setPatient(e.target.value)}
           />
           <TextField
             label="Doctor Name"
             fullWidth
-            margin="dense"
+            margin="normal"
             value={doctor}
             onChange={(e) => setDoctor(e.target.value)}
           />
           <TextField
             type="date"
             fullWidth
-            margin="dense"
+            margin="normal"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
         </DialogContent>
-        <DialogActions>
+
+        <DialogActions sx={{ p: 2 }}>
           <Button onClick={() => setOpen(false)}>Cancel</Button>
           <Button variant="contained" onClick={handleAdd}>
             Save
@@ -192,4 +261,3 @@ const Appointments = () => {
 };
 
 export default Appointments;
-

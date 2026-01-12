@@ -15,10 +15,12 @@ import {
   DialogActions,
   IconButton,
   Stack,
+  Box,
 } from "@mui/material";
 
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from "@mui/icons-material/Add";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([
@@ -31,7 +33,6 @@ const Doctors = () => {
   const [name, setName] = useState("");
   const [specialty, setSpecialty] = useState("");
 
-  // Open Add Dialog
   const handleAdd = () => {
     setEditingDoctor(null);
     setName("");
@@ -39,7 +40,6 @@ const Doctors = () => {
     setOpen(true);
   };
 
-  // Open Edit Dialog
   const handleEdit = (doctor) => {
     setEditingDoctor(doctor);
     setName(doctor.name);
@@ -47,70 +47,117 @@ const Doctors = () => {
     setOpen(true);
   };
 
-  // Save Doctor (Add or Update)
   const handleSave = () => {
     if (editingDoctor) {
-      // UPDATE
       setDoctors(
         doctors.map((doc) =>
-          doc.id === editingDoctor.id
-            ? { ...doc, name, specialty }
-            : doc
+          doc.id === editingDoctor.id ? { ...doc, name, specialty } : doc
         )
       );
     } else {
-      // CREATE
-      setDoctors([
-        ...doctors,
-        { id: Date.now(), name, specialty },
-      ]);
+      setDoctors([...doctors, { id: Date.now(), name, specialty }]);
     }
     setOpen(false);
   };
 
-  // Delete Doctor
   const handleDelete = (id) => {
     setDoctors(doctors.filter((doc) => doc.id !== id));
   };
 
   return (
     <>
-      <Typography variant="h4" fontWeight="bold" mb={3}>
-        Doctors
-      </Typography>
+      {/* Page Header */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: { xs: "stretch", sm: "center" },
+          flexDirection: { xs: "column", sm: "row" },
+          gap: 2,
+          mb: 3,
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: { xs: "1.6rem", sm: "2rem" },
+            fontWeight: 700,
+          }}
+        >
+          Doctors
+        </Typography>
 
-      <Button variant="contained" onClick={handleAdd} sx={{ mb: 2 }}>
-        Add Doctor
-      </Button>
+        <Button variant="contained" startIcon={<AddIcon />} onClick={handleAdd}>
+          Add Doctor
+        </Button>
+      </Box>
 
-      <Paper>
+      {/* Table */}
+      <Paper
+        sx={{
+          borderRadius: 4,
+          overflowX: "auto",
+          boxShadow: "0 8px 24px rgba(0,0,0,0.06)",
+        }}
+      >
         <Table>
           <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Specialty</TableCell>
-              <TableCell align="right">Actions</TableCell>
+            <TableRow sx={{ backgroundColor: "grey.100" }}>
+              <TableCell sx={{ fontWeight: 600 , fontSize: "1.3rem"}}>Name</TableCell>
+              <TableCell sx={{ fontWeight: 600 , fontSize: "1.3rem"}}>Specialty</TableCell>
+              <TableCell sx={{ fontWeight: 600 , fontSize: "1.3rem"}} align="right">
+                Actions
+              </TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
             {doctors.map((doctor) => (
-              <TableRow key={doctor.id}>
+              <TableRow
+                key={doctor.id}
+                sx={{
+                  fontSize: "1.3rem",
+                  transition: "0.2s",
+                  "&:hover": {
+                    backgroundColor: "grey.50",
+                  },
+                }}
+              >
                 <TableCell>{doctor.name}</TableCell>
                 <TableCell>{doctor.specialty}</TableCell>
+
                 <TableCell align="right">
                   <Stack direction="row" spacing={1} justifyContent="flex-end">
                     <IconButton
-                      color="primary"
                       onClick={() => handleEdit(doctor)}
+                      sx={{
+                       
+                        backgroundColor: "primary.light",
+                        "&:hover": {
+                          backgroundColor: "primary.main",
+                          color: "#fff",
+                           fontSize: "1.5rem",
+                   
+                        },
+                      }}
                     >
-                      <EditIcon />
+                      <EditIcon fontSize="small" />
                     </IconButton>
+
                     <IconButton
-                      color="error"
                       onClick={() => handleDelete(doctor.id)}
+                      sx={{
+                        backgroundColor: "error.light",
+                        "&:hover": {
+                          backgroundColor: "error.main",
+                          color: "#fff",
+                        },
+                        "& .MuiListItemText-primary": {
+                          fontSize: "1.5rem",
+                          fontWeight: 500,
+                        },
+                      }}
                     >
-                      <DeleteIcon />
+                      <DeleteIcon fontSize="small" />
                     </IconButton>
                   </Stack>
                 </TableCell>
@@ -120,28 +167,35 @@ const Doctors = () => {
         </Table>
       </Paper>
 
-      {/* Add/Edit Dialog */}
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>
+      {/* Dialog */}
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        fullWidth
+        maxWidth="sm"
+      >
+        <DialogTitle sx={{ fontWeight: 700,  fontSize: "1.5rem"}}>
           {editingDoctor ? "Edit Doctor" : "Add Doctor"}
         </DialogTitle>
-        <DialogContent>
+
+        <DialogContent sx={{ pt: 2 }}>
           <TextField
             label="Doctor Name"
             fullWidth
-            margin="dense"
+            margin="normal"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <TextField
             label="Specialty"
             fullWidth
-            margin="dense"
+            margin="normal"
             value={specialty}
             onChange={(e) => setSpecialty(e.target.value)}
           />
         </DialogContent>
-        <DialogActions>
+
+        <DialogActions sx={{ p: 2 }}>
           <Button onClick={() => setOpen(false)}>Cancel</Button>
           <Button variant="contained" onClick={handleSave}>
             Save
@@ -153,4 +207,3 @@ const Doctors = () => {
 };
 
 export default Doctors;
-
