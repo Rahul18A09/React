@@ -103,7 +103,11 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
           }}
         >
           {!collapsed && (
-            <Typography fontWeight={700} fontSize={"1.5rem"} color="success.main">
+            <Typography
+              fontWeight={700}
+              fontSize={"1.8rem"}
+              color="success.main"
+            >
               🏥 Health Center
             </Typography>
           )}
@@ -122,10 +126,10 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
           </Box>
         )} */}
 
-        <Divider sx={{mb:1}}/>
+        <Divider sx={{ mb: 1 }} />
 
         {/* 📜 MENU */}
-        <List sx={{ px: 1}}>
+        <List sx={{ px: 2}}>
           {menuItems
             .filter((item) => item.roles.includes(userRole))
             .map((item) => (
@@ -134,12 +138,12 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
                 title={collapsed ? item.text : ""}
                 placement="right"
               >
-                <motion.div whileHover={{ scale: 1.05 }}>
+                <motion.div whileHover={{ scale: 1.02 }} >
                   <ListItemButton
                     component={NavLink}
                     to={item.path}
                     onClick={isMobile ? () => setOpen(false) : undefined}
-                    sx={{   
+                    sx={{
                       borderRadius: 2,
                       mb: 2,
                       justifyContent: collapsed ? "center" : "flex-start",
@@ -151,7 +155,6 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
                   >
                     <ListItemIcon
                       sx={{
-                        fontSize:"1rem",
                         color: "inherit",
                         minWidth: collapsed ? "auto" : 40,
                         justifyContent: "center",
@@ -168,7 +171,7 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
         </List>
 
         {/* 👤 USER PROFILE */}
-        <Box sx={{ mt: "auto", p: 2 , fontSize:"1rem"}}>
+        <Box sx={{ mt: "auto", p: 2, fontSize: "1rem" }}>
           <Divider sx={{ mb: 2 }} />
 
           <Box

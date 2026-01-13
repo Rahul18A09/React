@@ -72,9 +72,7 @@ const Appointments = () => {
 
   const updateStatus = (id, status) => {
     setAppointments(
-      appointments.map((appt) =>
-        appt.id === id ? { ...appt, status } : appt
-      )
+      appointments.map((appt) => (appt.id === id ? { ...appt, status } : appt))
     );
   };
 
@@ -105,6 +103,7 @@ const Appointments = () => {
         </Typography>
 
         <Button
+          sx={{ fontSize: "1.2rem" }}
           variant="contained"
           startIcon={<AddIcon />}
           onClick={() => setOpen(true)}
@@ -124,11 +123,22 @@ const Appointments = () => {
         <Table>
           <TableHead>
             <TableRow sx={{ backgroundColor: "grey.100" }}>
-              <TableCell sx={{ fontWeight: 600, fontSize:"1.5rem"}}>Patient</TableCell>
-              <TableCell sx={{ fontWeight: 600, fontSize:"1.5rem"}}>Doctor</TableCell>
-              <TableCell sx={{ fontWeight: 600, fontSize:"1.5rem"}}>Date</TableCell>
-              <TableCell sx={{ fontWeight: 600, fontSize:"1.5rem"}}>Status</TableCell>
-              <TableCell sx={{ fontWeight: 600, fontSize:"1.5rem"}} align="right">
+              <TableCell sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
+                Patient
+              </TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
+                Doctor
+              </TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
+                Date
+              </TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
+                Status
+              </TableCell>
+              <TableCell
+                sx={{ fontWeight: 600, fontSize: "1.5rem" }}
+                align="right"
+              >
                 Actions
               </TableCell>
             </TableRow>
@@ -145,16 +155,18 @@ const Appointments = () => {
                   },
                 }}
               >
-                <TableCell sx={{fontSize:"1.2rem"}}>{appt.patient}</TableCell>
-                <TableCell sx={{fontSize:"1.2rem"}}>{appt.doctor}</TableCell>
-                <TableCell sx={{fontSize:"1.2rem"}}>{appt.date}</TableCell>
+                <TableCell sx={{ fontSize: "1.2rem" }}>
+                  {appt.patient}
+                </TableCell>
+                <TableCell sx={{ fontSize: "1.2rem" }}>{appt.doctor}</TableCell>
+                <TableCell sx={{ fontSize: "1.2rem" }}>{appt.date}</TableCell>
 
                 <TableCell>
                   <Chip
                     label={appt.status}
                     color={statusColor[appt.status]}
                     size="big"
-                    sx={{ fontWeight: 600, fontSize:"1.2rem" }}
+                    sx={{ fontWeight: 600, fontSize: "1.2rem" }}
                   />
                 </TableCell>
 
@@ -163,9 +175,7 @@ const Appointments = () => {
                     {appt.status === "Pending" && (
                       <>
                         <IconButton
-                          onClick={() =>
-                            updateStatus(appt.id, "Approved")
-                          }
+                          onClick={() => updateStatus(appt.id, "Approved")}
                           sx={{
                             backgroundColor: "success.light",
                             "&:hover": {
@@ -178,9 +188,7 @@ const Appointments = () => {
                         </IconButton>
 
                         <IconButton
-                          onClick={() =>
-                            updateStatus(appt.id, "Cancelled")
-                          }
+                          onClick={() => updateStatus(appt.id, "Cancelled")}
                           sx={{
                             backgroundColor: "warning.light",
                             "&:hover": {
@@ -221,14 +229,12 @@ const Appointments = () => {
         fullWidth
         maxWidth="sm"
       >
-        <DialogTitle sx={{ fontWeight: 700 }}>
-          Add Appointment
-        </DialogTitle>
+        <DialogTitle sx={{ fontWeight: 700 }}>Add Appointment</DialogTitle>
 
         <DialogContent sx={{ pt: 2 }}>
           <TextField
             label="Patient Name"
-            fullWidth 
+            fullWidth
             margin="normal"
             value={patient}
             onChange={(e) => setPatient(e.target.value)}
