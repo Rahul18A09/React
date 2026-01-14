@@ -33,7 +33,7 @@
         var $anchor = $(this);
           $('html, body').stop().animate({
             scrollTop: $($anchor.attr('href')).offset().top - 49
-          },3000);
+          },3500);
             event.preventDefault();
       });
     });  

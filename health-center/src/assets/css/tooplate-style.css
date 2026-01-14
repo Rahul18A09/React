@@ -80,6 +80,11 @@ p {
 
 html {
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: auto !important;
+}
+
+html, body {
+  scroll-behavior: auto !important;
 }
 
 a {
