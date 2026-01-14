@@ -135,14 +135,14 @@ function Footer(props) {
               </div>
               <div className="col-md-2 col-sm-2 text-align-center">
                 <div className="angle-up-btn">
-                  <Link
-                    to="/"
+                  <a
+                    href="#top"
                     className="smoothScroll wow fadeInUp"
                     data-wow-delay="1.2s"
                   >
                     {/* <i className="fa fa-angle-up" /> */}
                     <FontAwesomeIcon className="icon" icon={faAngleUp} />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
