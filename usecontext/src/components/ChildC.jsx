@@ -3,11 +3,21 @@ import { ThemeContext, } from "../App";
 
 function ChildC() {
   // const user = useContext(UserContext)
-  const theme = useContext(ThemeContext);
+  const {theme, setTheme} = useContext(ThemeContext);
+
+  function ToggleTheme(){
+
+    if(theme === "light")
+        setTheme("dark")
+    else
+        setTheme("light")
+
+  }
+
 
   return (
     <div>
-      <button>Change Theme</button>
+      <button onClick={ToggleTheme}>Change Theme</button>
     </div>
   );
 }
