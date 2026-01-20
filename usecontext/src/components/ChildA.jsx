@@ -1,12 +1,12 @@
-import React from 'react';
-import ChildB from './ChildB';
+import React from 'react'
+import ChildB from './ChildB'
 
-function ChildA(props) {
-    return (
-        <div>
-           <ChildB/> 
-        </div>
-    );
+function ChildA() {
+  return (
+    <div>
+      <ChildB/>
+    </div>
+  )
 }
 
-export default ChildA;
+export default ChildA

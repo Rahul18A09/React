@@ -1,30 +1,29 @@
-import React, { createContext, useState } from "react";
+// import React, { createContext, useState } from "react";
+
+
+import { createContext, useState } from "react";
 import ChildA from "./components/ChildA";
-import "./App.css";
 
-//step1: create Context
-export const UserContext = createContext();
+// const UserContext = createContext();
 
-// step2: wrap all the child inside a probider
-// step3: pass value
-// step4: consumer ke under jake consume karlo
-
-export const ThemeContext = createContext();
+const  ThemeContext = createContext();
 
 function App() {
-  const [user, setUser] = useState({name:"Rahul"});
+  // const [user, setUser] = useState({name:"Rahul"});
+
   const [theme, setTheme] = useState("light");
   return (
-    <UserContext.Provider value={user}>
-      <ThemeContext.Provider value={{ theme, setTheme }}>
-        <div
-          id="container"
-          style={{ backgroundColor: theme === "light" ? "beige" : "black" }}
-        >
-          <ChildA />
-        </div>
-      </ThemeContext.Provider>
-    </UserContext.Provider>
+
+
+<ThemeContext.Provider value={theme}>
+  <ChildA/>
+</ThemeContext.Provider>
+
+
+
+
+
+
 
     // <>
     //   <UserContext.Provider value={user}>
@@ -35,3 +34,5 @@ function App() {
 }
 
 export default App;
+// export {UserContext}
+export {ThemeContext} 
