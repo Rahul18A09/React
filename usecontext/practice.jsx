@@ -9,3 +9,9 @@ User login info
 Theme (dark/light mode)
 Language
 Global settings
+
+✅ Key Points to Remember
+useContext avoids prop drilling
+It makes code cleaner and readable
+Best for global data
+Do NOT overuse it for frequently changing data
