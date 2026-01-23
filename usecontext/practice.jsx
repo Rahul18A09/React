@@ -20,3 +20,8 @@ Do NOT overuse it for frequently changing data
 fetch() is a built-in JavaScript function
 No need to install anything
 Works in modern browsers
+
+fetch("https://api.example.com/users")
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
