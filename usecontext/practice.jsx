@@ -15,3 +15,8 @@ useContext avoids prop drilling
 It makes code cleaner and readable
 Best for global data
 Do NOT overuse it for frequently changing data
+
+1️⃣ What is Fetch?
+fetch() is a built-in JavaScript function
+No need to install anything
+Works in modern browsers
