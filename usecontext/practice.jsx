@@ -36,4 +36,6 @@ import axios from "axios";
 
 axios.get("https://api.example.com/users")
   .then(response => console.log(response.data))
-  .catch(error => console.log(error));
+  .catch(error => console.log(error))
+
+Done for Today.
