@@ -25,3 +25,15 @@ fetch("https://api.example.com/users")
   .then(res => res.json())
   .then(data => console.log(data))
   .catch(err => console.log(err));
+
+2️⃣ What is Axios?
+Axios is a third-party library
+You must install it:
+
+npm install axios
+
+import axios from "axios";
+
+axios.get("https://api.example.com/users")
+  .then(response => console.log(response.data))
+  .catch(error => console.log(error));
