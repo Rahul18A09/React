@@ -39,3 +39,8 @@ axios.get("https://api.example.com/users")
   .catch(error => console.log(error))
 
 Done for Today.
+
+✅ Use Fetch when:
+You want no extra dependency
+Small project
+Simple API calls
