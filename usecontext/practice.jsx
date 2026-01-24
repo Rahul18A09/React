@@ -44,3 +44,10 @@ Done for Today.
 You want no extra dependency
 Small project
 Simple API calls
+
+✅ Use Axios when:
+Large application
+Need interceptors (like adding token automatically)
+Need timeout
+Need better error handling
+Working with MERN stack (very common)
