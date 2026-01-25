@@ -51,3 +51,13 @@ Need interceptors (like adding token automatically)
 Need timeout
 Need better error handling
 Working with MERN stack (very common)
+
+1️⃣ What is State? (Very Simple)
+State = data that can change
+Example:
+Counter number
+Input value
+Login status
+Cart items
+❗ Props → cannot change
+❗ State → can change
