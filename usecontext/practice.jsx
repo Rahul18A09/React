@@ -61,3 +61,11 @@ Login status
 Cart items
 ❗ Props → cannot change
 ❗ State → can change
+
+Interview Questions (State)
+❓ What is state?
+👉 State is mutable data managed inside a component.
+❓ Why not update state directly?
+👉 React won’t re-render.
+❓ Props vs State?
+👉 Props are external & read-only, state is internal & changeable.
