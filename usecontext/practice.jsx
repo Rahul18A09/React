@@ -69,3 +69,6 @@ Interview Questions (State)
 👉 React won’t re-render.
 ❓ Props vs State?
 👉 Props are external & read-only, state is internal & changeable.
+
+📌 What is an Array?
+An array is a list of values stored in a single variable.
