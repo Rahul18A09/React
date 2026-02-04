@@ -29,3 +29,10 @@ Components are reusable pieces of UI.
 Two types:
 Functional Components
 Class Components
+
+3. What is JSX?
+JSX (JavaScript XML) allows writing HTML-like syntax inside JavaScript.
+Example:
+Copy code
+Jsx
+const element = <h1>Hello World</h1>;
