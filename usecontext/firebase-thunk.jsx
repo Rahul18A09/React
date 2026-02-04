@@ -21,3 +21,11 @@ It gives you:
 ✅ Hosting
 ✅ Analytics
 So you don’t need to build backend with Node/Express for basic apps.
+
+1. What is React?
+React is a JavaScript library for building user interfaces, especially single-page applications. It uses a component-based architecture.
+2. What are components in React?
+Components are reusable pieces of UI.
+Two types:
+Functional Components
+Class Components
