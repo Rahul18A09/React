@@ -36,3 +36,6 @@ Example:
 Copy code
 Jsx
 const element = <h1>Hello World</h1>;
+
+4. What is Virtual DOM?
+Virtual DOM is a lightweight copy of the real DOM. React updates only changed parts instead of re-rendering the whole DOM.
