@@ -49,3 +49,6 @@ Read-only
 Can be changed
 Immutable
 Mutable
+
+6. What are Hooks?
+Hooks allow functional components to use state and lifecycle features.
