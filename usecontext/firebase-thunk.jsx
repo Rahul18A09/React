@@ -74,3 +74,6 @@ useEffect(() => {
 [] → run once (on mount)
 [value] → run when value changes
 No array → run on every render
+
+10. What is useRef?
+Used to access DOM elements or store mutable values.
