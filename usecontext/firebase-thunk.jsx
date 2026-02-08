@@ -69,3 +69,8 @@ Jsx
 useEffect(() => {
   console.log("Component Mounted");
 }, []);
+
+9. What is dependency array in useEffect?
+[] → run once (on mount)
+[value] → run when value changes
+No array → run on every render
