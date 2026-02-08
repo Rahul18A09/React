@@ -1,4 +1,4 @@
-🧠 What’s Happening Internally?
+what🧠 What’s Happening Internally?
 createAsyncThunk() handles:
 pending
 fulfilled
@@ -52,3 +52,9 @@ Mutable
 
 6. What are Hooks?
 Hooks allow functional components to use state and lifecycle features.
+
+7. What is useState?
+Used to manage state in functional components.
+Copy code
+Jsx
+const [count, setCount] = useState(0);
