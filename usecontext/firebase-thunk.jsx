@@ -58,3 +58,14 @@ Used to manage state in functional components.
 Copy code
 Jsx
 const [count, setCount] = useState(0);
+
+8. What is useEffect?
+Used for side effects like:
+API calls
+Event listeners
+Timers
+Copy code
+Jsx
+useEffect(() => {
+  console.log("Component Mounted");
+}, []);
